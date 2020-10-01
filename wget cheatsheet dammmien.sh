@@ -1,3 +1,5 @@
+TODO: CLean this and turn it into an actually usable cheatsheet
+
 # POST a JSON file and redirect output to stdout
 wget -q -O - --header="Content-Type:application/json" --post-file=foo.json http://127.0.0.1
 
