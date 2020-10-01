@@ -15,7 +15,8 @@
     -framerate 24000/1001
 ** Removing Subtitles:  
     ffmpeg -i video.mkv -vcodec copy -acodec copy -sn video-no-subs.mkv
-** Stream Detection:  ;; Show the various streams present in a file)
+** Stream Detection:  
+# Show the various streams present in a file
     ffprobe -v error -show_entries stream=index,codec_name,codec_type video.mp4 \\
     @pause
 ** Extract Subtitles:
