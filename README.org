@@ -31,3 +31,7 @@ youtube-dl -f bestaudio --extract-audio --audio-format mp3 --embed-thumbnail --a
 youtube-dl --write-sub --embed-subs --merge-output-format mp4 <url> -o "%(playlist_index)2d - %(title)s.%(ext)s"
 #+END_SRC
 
+* Blog Workflow
+Make changes, save, export (=SPC m e H A=), run =hugo=, push!
+
+
