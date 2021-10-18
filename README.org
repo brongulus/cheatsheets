@@ -2,3 +2,32 @@
 This ia a test repository containing some of my cheatsheets
   1. ffmpeg
   2. wget
+
+* Useful scripts
+** Convert Images to a pdf
+#BEGIN_SRC sh
+magick *.jpg out.pdf
+#END_SRC
+
+** Combine pdfs
+#BEGIN_SRC sh
+qpdf --empty --pages *.pdf -- out.pdf
+
+pdftk *.pdf cat output out.pdf
+#END_SRC
+
+** List all files in a directory
+#BEGIN_SRC sh
+echo *.pdf | tr ' ' $'\n'
+#END_SRC
+
+** Extract audio from YT
+#BEGIN_SRC sh
+youtube-dl -f bestaudio --extract-audio --audio-format mp3 --embed-thumbnail --add-metadata <url>
+#END_SRC
+
+** YT Playlists with subtitles
+#BEGIN_SRC sh
+youtube-dl --write-sub --embed-subs --merge-output-format mp4 <url> -o "%(playlist_index)2d - %(title)s.%(ext)s"
+#END_SRC
+
