@@ -16,6 +16,11 @@ qpdf --empty --pages *.pdf -- out.pdf
 pdftk *.pdf cat output out.pdf
 #+END_SRC
 
+** Compress PDF
+#+BEGIN_SRC sh
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=out.pdf input.pdf
+#+END_SRC
+
 ** List all files in a directory
 #+BEGIN_SRC sh
 echo *.pdf | tr ' ' $'\n'
@@ -33,5 +38,6 @@ youtube-dl --write-sub --embed-subs --merge-output-format mp4 <url> -o "%(playli
 
 * Blog Workflow
 Make changes, save, export (=SPC m e H A=), run =hugo=, push!
+
 
 
