@@ -26,6 +26,10 @@ gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dDownsampleColorImages=true \
 -dColorImageResolution=150 -dNOPAUSE  -dBATCH -sOutputFile=output.pdf input.pdf
 #+END_SRC
 
+#+BEGIN_SRC sh
+gs -q -dNOPAUSE -dBATCH -dSAFER -dOverprint=enable -sDEVICE=pdfwrite -dPDFSETTINGS=/ebook -dEmbedAllFonts=true -dSubsetFonts=true -dAutoRotatePages=/None -dColorImageDownsampleType=/Bicubic -dColorImageResolution=150 -dGrayImageDownsampleType=/Bicubic -dGrayImageResolution=150 -dMonoImageDownsampleType=/Bicubic -dMonoImageResolution=150 -sOutputFile=output.pdf input.pdf
+#+END_SRC
+
 ** List all files in a directory
 #+BEGIN_SRC sh
 echo *.pdf | tr ' ' $'\n'
