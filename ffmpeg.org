@@ -19,6 +19,8 @@
 # Show the various streams present in a file
     ffprobe -v error -show_entries stream=index,codec_name,codec_type video.mp4 \\
     @pause
+** Trim Video:
+     ffmpeg -ss 00:01:00 -i input.mp4 -to 00:02:00 -c copy output.mp4
 ** Extract Subtitles:
     ffmpeg -i input.mp4 -map 0:s:1 subs.srt \\
     //0:s:0 first subtitle \\
