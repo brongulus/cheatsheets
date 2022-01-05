@@ -53,6 +53,11 @@ rm -f ~/.local/share/icons/hicolor/*/*/application-x-wine-extension*
 rm -f ~/.local/share/mime/application/x-wine-extension* 
 #+END_SRC
 
+** Download images from 4ch thread
+#+BEGIN_SRC sh
+wget -P pictures -nd -r -l 1 -H -D i.4cdn.org -A webm -R *?????????????s* <url>
+#+END_SRC
+
 * Blog Workflow
 Make changes, save, export (=SPC m e H A=), run =hugo=, push!
 
