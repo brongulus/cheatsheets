@@ -58,6 +58,12 @@ rm -f ~/.local/share/mime/application/x-wine-extension*
 wget -P pictures -nd -r -l 1 -H -D i.4cdn.org -A webm -R *?????????????s* <url>
 #+END_SRC
 
+** Replace web links with local files for downloaded 4ch webpage
+__*NOTE:*__ Here the dots after org denote the number of characters in the thread name.
+#+BEGIN_SRC sh
+sed -i 's/https:\/\/i\.4cdn\.org\/.../\./g' 'file'
+#+END_SRC
+
 * Blog Workflow
 Make changes, save, export (=SPC m e H A=), run =hugo=, push!
 
