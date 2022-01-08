@@ -59,9 +59,8 @@ wget -P pictures -nd -r -l 1 -H -D i.4cdn.org -A webm -R *?????????????s* <url>
 #+END_SRC
 
 ** Replace web links with local files for downloaded 4ch webpage
-*NOTE:* Here the dots after org denote the number of characters in the thread name.
 #+BEGIN_SRC sh
-sed -i 's/https:\/\/i\.4cdn\.org\/.../\./g' 'file'
+sed -i 's/https:\/\/i\.4cdn\.org\/[a-z]{1,4}/\./g' 'file'
 #+END_SRC
 
 * Blog Workflow
