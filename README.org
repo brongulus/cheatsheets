@@ -63,6 +63,11 @@ wget -P pictures -nd -r -l 1 -H -D i.4cdn.org -A webm -R *?????????????s* <url>
 sed -i 's/https:\/\/i\.4cdn\.org\/[a-z]{1,4}/\./g' 'file'
 #+END_SRC
 
+** Reminder
+#+BEGIN_SRC sh
+echo 'notify-send "Work day is done!"' | at 4:00PM # at now + 1 minute
+#+END_SRC
+
 * Blog Workflow
 Make changes, save, export (=SPC m e H A=), run =hugo=, push!
 
