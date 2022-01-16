@@ -1,0 +1,10 @@
+* Post Install
+
+** TODO Enable NumLock By Default, look into bspwm. Exciting stuff!! 
+
+** Fix inverted scroll
+#+BEGIN_SRC sh
+libinput list-devices  # look for touchpad, check natural scrolling
+xinput list-props <touchpad-device-name> # note id of natural scrolling
+xinput set-prop <device-name> <natScrollID> 1 # enables natural scrolling
+#+END_SRC sh
