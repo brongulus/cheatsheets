@@ -19,4 +19,6 @@ sudo fdisk -l # note down device ID of interest
 sudo blkid # note down UUIDs corresponding to device ID
 # Win Partition
 sudo mkdir /mnt/Data # create the mount dir
-UUID=<xxxxx> /mnt/Data ntfs defaults 0 0
+UUID=<xxxxx> /mnt/Data ntfs defaults,noatime 0 0 # append to fstab
+sudo mount -a # mount and check
+#+END_SRC
