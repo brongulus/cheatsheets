@@ -12,6 +12,17 @@ xinput set-prop <device-name> <natScrollID> 1 # enables natural scrolling
 #+END_SRC
 
 ** Fix Screen Tearing Nvidia
+#+BEGIN_SRC sh
+sudo nvidia-xconfig # generate config
+sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf.d/20-nvidia.conf # move to required dir
+#+END_SRC
+
+#+BEGIN_SRC sh
+# add to Section "Screen" of 20-nvidia.conf
+    Option         "MetaModes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+    Option         "AllowIndirectGLXProtocol" "off"
+    Option         "TripleBuffer" "on"
+#+END_SRC
 
 ** Mount NTFS Data Partition and Manjaro Partition
 #+BEGIN_SRC sh
@@ -19,6 +30,7 @@ sudo fdisk -l # note down device ID of interest
 sudo blkid # note down UUIDs corresponding to device ID
 # Win Partition
 sudo mkdir /mnt/Data # create the mount dir
-UUID=<xxxxx> /mnt/Data ntfs defaults,noatime 0 0 # append to fstab ## optionally, if using thunar add =x-gvfs-show= to opts for mounted dirs to show by default
+UUID=<xxxxx> /mnt/Data ntfs defaults,noatime 0 0 # append to fstab 
+# optionally, if using thunar add =x-gvfs-show= to opts for mounted dirs to show by default
 sudo mount -a # mount and check
 #+END_SRC
