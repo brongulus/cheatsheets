@@ -4,7 +4,10 @@
 
 ** Get fonts!
 
-** Fix inverted scroll
+** Turn NumLock on by default
+Add setleds -D +num to ~/.bash_profile
+
+** Fix inverted scroll (This is temp)
 #+BEGIN_SRC sh
 libinput list-devices  # look for touchpad, check natural scrolling
 xinput list-props <touchpad-device-name> # note id of natural scrolling
