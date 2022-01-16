@@ -9,4 +9,14 @@
 libinput list-devices  # look for touchpad, check natural scrolling
 xinput list-props <touchpad-device-name> # note id of natural scrolling
 xinput set-prop <device-name> <natScrollID> 1 # enables natural scrolling
-#+END_SRC sh
+#+END_SRC
+
+** Fix Screen Tearing Nvidia
+
+** Mount NTFS Data Partition and Manjaro Partition
+#+BEGIN_SRC sh
+sudo fdisk -l # note down device ID of interest
+sudo blkid # note down UUIDs corresponding to device ID
+# Win Partition
+sudo mkdir /mnt/Data # create the mount dir
+UUID=<xxxxx> /mnt/Data ntfs defaults 0 0
