@@ -2,6 +2,8 @@
 
 ** TODO Enable NumLock By Default, look into bspwm. Exciting stuff!! 
 
+** Get fonts!
+
 ** Fix inverted scroll
 #+BEGIN_SRC sh
 libinput list-devices  # look for touchpad, check natural scrolling
