@@ -42,7 +42,7 @@ youtube-dl -f bestaudio --extract-audio --audio-format mp3 --embed-thumbnail --a
 
 ** YT Playlists with subtitles
 #+BEGIN_SRC sh
-youtube-dl --write-sub --embed-subs --merge-output-format mp4 <url> -o "%(playlist_index)2d - %(title)s.%(ext)s"
+youtube-dl --write-auto-sub --embed-subs --merge-output-format mp4 <url> -o "%(playlist_index)2d - %(title)s.%(ext)s"
 #+END_SRC
 
 ** Remove wine xdg applications
