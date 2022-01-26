@@ -7,32 +7,53 @@
 ** AAC Audio:
     -c:a aac -b:a 128k
 ** Add subtitles:
+    #+BEGIN_SRC sh
     ffmpeg -i in.mkv -i sub.srt -c:v copy -c:a copy -c:s copy out.mkv
+    #+END_SRC
+    
 ** Merge Audio and Video Streams:
+    #+BEGIN_SRC sh
     ffmpeg -i in.mp4 -i audio.mp3 -c:v copy -c:a aac -strict experimental output.mp4 \\
     @pause
+    #+END_SRC
+    
 ** Constant Frame Rate:
     -framerate 24000/1001
 ** Removing Subtitles:  
+    #+BEGIN_SRC sh  
     ffmpeg -i video.mkv -vcodec copy -acodec copy -sn video-no-subs.mkv
+    #+END_SRC
+    
 ** Stream Detection:  
-# Show the various streams present in a file
+    #+BEGIN_SRC sh
+    # Show the various streams present in a file
     ffprobe -v error -show_entries stream=index,codec_name,codec_type video.mp4 \\
     @pause
+    #+END_SRC
+    
 ** Trim Video:
-     ffmpeg -ss 00:01:00 -i input.mp4 -to 00:02:00 -c copy output.mp4
+    #+BEGIN_SRC sh
+    ffmpeg -ss 00:01:00 -i input.mp4 -to 00:02:00 -c copy output.mp4
+    #+END_SRC
+    
 ** Extract Subtitles:
+    #+BEGIN_SRC sh
     ffmpeg -i input.mp4 -map 0:s:1 subs.srt \\
     //0:s:0 first subtitle \\
     //0:s:1 second and so on 
+    #+END_SRC
+    
 ** Batch Encoding:
+    #+BEGIN_SRC sh
     @echo off \\
     for /r %%f in (*.mp4) do ( \\
     ffmpeg -i "%%~nxf" -c:v libx265 -pix_fmt yuv420p10le -crf 26 -c:a aac -b:a 128k "%%~nf.mkv" \\
     ) \\
     @pause
+    #+END_SRC
     
 * Example:
-  ffmpeg -i foo1.mp4 -c:v libx265 -r 24000/1001 -pix_fmt yuv420p10le -crf 25 -c:a aac -b:a 128k foo.mkv \\     
-  @pause
-
+    #+BEGIN_SRC sh
+    ffmpeg -i foo1.mp4 -c:v libx265 -r 24000/1001 -pix_fmt yuv420p10le -crf 25 -c:a aac -b:a 128k foo.mkv \\     
+    @pause
+    #+END_SRC
