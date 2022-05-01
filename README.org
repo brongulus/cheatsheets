@@ -58,10 +58,24 @@ rm -f ~/.local/share/mime/application/x-wine-extension*
 wget -P pictures -nd -r -l 1 -H -D i.4cdn.org -A webm -R *?????????????s* <url>
 #+END_SRC
 
+- P: dir prefix
+- nd: no dir hierarchy
+- r: recursive
+- l: recursion depth level
+- D: domain list
+- A/R: accept/reject
+
 ** Replace web links with local files for downloaded 4ch webpage
 #+BEGIN_SRC sh
 sed -i 's/https:\/\/i\.4cdn\.org\/[a-z]{1,4}/\./g' 'file'
 #+END_SRC
+
+#+BEGIN_SRC sh
+sed -i 's/https:\/\/torako.wakarimasen.moe\/file\/torako\/[a-z]{1,4}\/image\/\d+\/\d+/\./g' 'file'
+#+END_SRC
+
+- [a-z] Char class, {1,4} Quantifier, matches prev token b/w 1 to 4 times, as many times as possible
+- \d is [0-9], + is 1 or more times
 
 ** Reminder
 #+BEGIN_SRC sh
