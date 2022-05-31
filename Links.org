@@ -42,6 +42,7 @@
 9. [[https://petr-mitrichev.blogspot.com/2014/05/coming-up-with-tough-dynamic.html][Algorithms Weekly DP]]
 10. [[https://btholt.github.io/complete-intro-to-computer-science/][BT Holt - Intro to CS]]
 11. [[https://btholt.github.io/intro-to-web-dev-v2/][BT Holt - Intro to Web Dev]]
+12. [[https://iiit-programming-club.github.io/Resources/Tips-and-tricks][CP Tricks - IIIT Hyd]]
 
 * Grains
 
