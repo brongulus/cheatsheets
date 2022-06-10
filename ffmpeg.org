@@ -2,6 +2,8 @@
 [[https://slhck.info/ffmpeg-encoding-course/][ffmpeg Encoding Course by slhck]]
 
 * Example Scripts
+** Downscale:
+    -vf scale=-1:720
 ** 10 bit Video: 
     -pix_fmt yuv420p10le
 ** AAC Audio:
