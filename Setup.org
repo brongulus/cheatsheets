@@ -40,3 +40,8 @@ sudo mount -a # mount and check
 
 ** Configure git
 + Ref link: [[https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent][SSH-Agent Configuration]]
+
+** Time Sync dual boot
+#+BEGIN_SRC sh
+timedatectl set-local-rtc 1
+#+END_SRC
