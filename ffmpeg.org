@@ -45,6 +45,13 @@
     //0:s:1 second and so on 
     #+END_SRC
     
+** Extract Audio:
+    #+BEGIN_SRC
+    for f in *.mp4;
+    do ffmpeg -i "$f" -vn -c:a copy out/"${f%.*}.aac";
+    done
+    #+END_SRC
+    
 ** Batch Encoding:
     #+BEGIN_SRC sh
     @echo off \\
