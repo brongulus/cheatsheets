@@ -9,6 +9,11 @@ This ia a test repository containing some of my cheatsheets
 pandoc -s input.docx --extract-media=./media --pdf-engine=tectonic --template=pandoc_template.tex -V documentclass="book" -V classoptions="oneside,letterpaper,openany" -V geometry="margin=1 in" -V mainfont="Noto Serif JP" -o out.pdf
 #+END_SRC
 
+** Pdf page resize (pdfjam, tectonic)
+#+BEGIN_SRC sh
+pdfjam --outfile out.pdf --paper a5paper --latex /usr/bin/tectonic in.pdf
+#+END_SRC
+
 ** Convert Images to a pdf
 #+BEGIN_SRC sh
 magick *.jpg out.pdf
