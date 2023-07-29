@@ -1,4 +1,4 @@
-* Test Cheat Sheets
+* Cheat Sheet
 This ia a test repository containing some of my cheatsheets
   1. ffmpeg
   2. wget
