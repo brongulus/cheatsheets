@@ -3,7 +3,16 @@
 #include <bits/stdc++.h>
  
 using namespace std;
- 
+
+template <typename A>
+string to_string(priority_queue<A> p);
+
+template <typename A>
+string to_string(stack<A> p);
+
+template <typename A>
+string to_string(queue<A> p);
+
 template <typename A, typename B>
 string to_string(pair<A, B> p);
  
@@ -58,6 +67,42 @@ string to_string(A v) {
     }
     first = false;
     res += to_string(x);
+  }
+  res += "}";
+  return res;
+}
+
+template <typename A>
+string to_string(priority_queue<A> p) {
+  string res = "{";
+  while(!p.empty()) {
+    res += to_string(p.top());
+    if(p.size() != 1) res += ", ";
+    p.pop();
+  }
+  res += "}";
+  return res;
+}
+
+template <typename A>
+string to_string(stack<A> p) {
+  string res = "{";
+  while(!p.empty()) {
+    res += to_string(p.top());
+    if(p.size() != 1) res += ", ";
+    p.pop();
+  }
+  res += "}";
+  return res;
+}
+
+template <typename A>
+string to_string(queue<A> p) {
+  string res = "{";
+  while(!p.empty()) {
+    res += to_string(p.front());
+    if(p.size() != 1) res += ", ";
+    p.pop();
   }
   res += "}";
   return res;
