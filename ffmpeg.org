@@ -1,13 +1,16 @@
 * Excellent Introductory Course:
 [[https://slhck.info/ffmpeg-encoding-course/][ffmpeg Encoding Course by slhck]]
 
-* Example Scripts
+* Example Snippets and Flags
 ** Downscale:
     -vf scale=-1:720
+
 ** 10 bit Video: 
     -pix_fmt yuv420p10le
+
 ** AAC Audio:
     -c:a aac -b:a 128k
+
 ** Add subtitles:
     #+BEGIN_SRC sh
     ffmpeg -i in.mkv -i sub.srt -c:v copy -c:a copy -c:s copy out.mkv
@@ -21,6 +24,12 @@
     
 ** Constant Frame Rate:
     -framerate 24000/1001
+
+** MPEG-TS stream to mp4:
+    #+BEGIN_SRC sh  
+    ffmpeg -y -f mpegts -i in.ts -c copy out.mp4
+    #+END_SRC
+
 ** Removing Subtitles:  
     #+BEGIN_SRC sh  
     ffmpeg -i video.mkv -vcodec copy -acodec copy -sn video-no-subs.mkv
