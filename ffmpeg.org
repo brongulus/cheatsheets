@@ -80,3 +80,57 @@
     ffmpeg -i foo1.mp4 -c:v libx265 -r 24000/1001 -pix_fmt yuv420p10le -crf 25 -c:a aac -b:a 128k foo.mkv \\     
     @pause
     #+END_SRC
+
+* iPod album art conversion
+
+#+BEGIN_SRC sh
+#!/usr/bin/env bash
+shopt -s nullglob
+
+# This doesn't use ffmpeg because it destroys the images and iPod cannot
+# handle ffmpeg processed images so need to resort to all this hackery ;-;
+
+# Dependencies
+for cmd in eyeD3 magick metaflac; do
+    if ! command -v "$cmd" >/dev/null; then
+        echo "Error: $cmd is not installed."
+        exit 1
+    fi
+done
+
+for file in *.mp3 *.flac; do
+    echo "Processing '$file'..."
+    mkdir -p tmp
+
+    # Extract
+    if [[ "$file" == *.mp3 ]]; then
+        eyeD3 --write-images=tmp "$file" >/dev/null 2>&1
+    elif [[ "$file" == *.flac ]]; then
+        metaflac --export-picture-to=tmp/FRONT_COVER.jpg "$file" 2>/dev/null
+    fi
+
+    if [[ ! -f tmp/FRONT_COVER.jpg ]]; then
+        echo "  No embedded thumbnail found, skipping."
+        rm -rf tmp
+        continue
+    fi
+
+    # Convert to baseline JPEG
+    magick tmp/FRONT_COVER.jpg -resize 320x320^ -gravity center -extent 320x320 \
+           -sampling-factor 4:4:4 -interlace none -colorspace sRGB cover_new.jpg
+
+    # Re-embed
+    if [[ "$file" == *.mp3 ]]; then
+        eyeD3 --remove-all-images "$file" >/dev/null 2>&1
+        eyeD3 --add-image cover_new.jpg:FRONT_COVER "$file" >/dev/null 2>&1
+    elif [[ "$file" == *.flac ]]; then
+        metaflac --remove --block-type=PICTURE "$file"
+        metaflac --import-picture-from=cover_new.jpg "$file"
+    fi
+
+    rm -rf tmp cover_new.jpg
+    echo "  Done."
+done
+
+echo "All files processed."
+#+END_SRC
